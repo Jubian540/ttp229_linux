@@ -3,52 +3,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gpio/gpio.h"
+#include "ttp229.h"
 
 int main(int argc, char *argv[])
 {
-	struct gpio *scl, *sdo;
-	int state, data;
+	struct ttp229* pttp229;
+	struct ttp229_state state;
 	if (argc != 3) {
 		printf("use: keyboard {pin_scl} {pin_sdo}!\n");
 		return -1;
 	}
 
-	if ((scl = malloc(sizeof(struct gpio))) == NULL) {
+	if ((pttp229 = malloc(sizeof(struct ttp229))) == NULL) {
 		printf("out of memory!\n");
 		return -1;
 	}
 
-	if ((sdo = malloc(sizeof(struct gpio))) == NULL) {
-		printf("out of memory!\n");
+	pttp229->pin_scl = atoi(argv[1]);
+	pttp229->pin_sdo = atoi(argv[2]);
+
+	if (init_ttp229(pttp229)) {
+		printf("ttp229 init failed!\n");
 		return -1;
 	}
-
-	if (malloc_gpio(scl, atoi(argv[1]), DIRECTION_OUT)) {
-		printf("gpio init failed!\n");
-		return -1;
-	}
-
-	if (malloc_gpio(sdo, atoi(argv[2]), DIRECTION_IN)) {
-		printf("gpio init failed!\n");
-		return -1;
-	}
-	
-	printf("gpio init successed!\n");
-
 
 	while (1) {
-		state = 0;
-		g_write(scl, &state);
-		usleep(50);
-		state = 1;
-		g_write(scl, &state);
-		usleep(50);
-		g_read(sdo, &data);
-		printf("data=%d\n", data);
+		ttp229_read(pttp229, &state);
+		if (state.is_press) {
+			printf("on press, key=%d\n", state.key);
+		}
 	}
-
-	g_close(scl);
-	g_close(sdo);
 
 	return 0;
 }
