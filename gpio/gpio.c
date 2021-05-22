@@ -27,14 +27,23 @@ int malloc_gpio(struct gpio* pgpio, int port, char *direction)
 
 int set_direction(struct gpio* pgpio, char *direction)
 {
+	int fd;
 	char buf[128];
 	sprintf(buf, "/sys/class/gpio/gpio%d", pgpio->port);
 	if (access(buf, R_OK|W_OK)) {
-		sprintf(buf, "echo %d > /sys/class/gpio/export", pgpio->port);
-		system(buf);
+		fd = open("/sys/class/gpio/export", O_WRONLY);
+		if (fd == -1) {
+			perror("open /sys/class/gpio/export failed!");
+			return -1;
+		}
+
+		sprintf(buf, "%d", pgpio->port);
+		write(fd, buf, strlen(buf));
+		close(fd);
+
 		sprintf(buf, "/sys/class/gpio/gpio%d", pgpio->port);
 		if (access(buf, R_OK|W_OK)) {
-			perror("set direction error: ");
+			perror("set direction error");
 			return -1;
 		}	
 	}
@@ -44,9 +53,14 @@ int set_direction(struct gpio* pgpio, char *direction)
 		return -1;
 	}
 
-	sprintf(buf, "echo %s > /sys/class/gpio/gpio%d/direction", direction, pgpio->port);
-	printf("%s\n", buf);
-	system(buf);
+	sprintf(buf, "/sys/class/gpio/gpio%d/direction", pgpio->port);
+	fd = open(buf, O_WRONLY);
+	if (fd == -1) {
+		perror("set direction error!");
+		return -1;
+	}
+	write(fd, direction, strlen(direction));
+	close(fd);
 	strcpy(pgpio->direction, direction);
 	return 0;
 }
