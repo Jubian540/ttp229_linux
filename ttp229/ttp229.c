@@ -49,7 +49,7 @@ int ttp229_read(struct ttp229* pttp229, struct ttp229_state *pstate)
 		g_read(pttp229->gp_sdo, &data);
 		if (data == 1) {
 			pstate->is_press = 1;
-			pstate->key = i;
+			pstate->key |= (1 << i);
 		}
 		usleep(50);
 	}

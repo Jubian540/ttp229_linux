@@ -10,6 +10,7 @@
 
 int main(int argc, char *argv[])
 {
+	char s[32];
 	int sum;
 	int count;
 	int prev_key;
@@ -30,30 +31,10 @@ int main(int argc, char *argv[])
 	}
 
 	while (1) {
+		usleep(1000);
 		ttp229_read(pttp229, &state);
-		if (state.is_press) {
-			sum = 0;
-			count = 0;
-			prev_key = state.key;
-			do {
-				if (prev_key != state.key) {
-					sum = prev_key - state.key;
-					count++;
-				}
-				prev_key = state.key;
-				ttp229_read(pttp229, &state);
-			} while (state.is_press);
-			if (count > 2 && sum > 0) {
-				printf("up\n");
-				ANDROID_CMD(ANDROID_VOLUME_UP);
-			} else if (count > 2 && sum < 0) {
-				printf("down\n");
-				ANDROID_CMD(ANDROID_VOLUME_DOWN);
-			} else {
-				printf("press\n");
-				ANDROID_CMD(ANDROID_POWER);
-			}
-		}
+		if (state.is_press)
+			printf("key: 0x%x\n", state.key);
 	}
 
 	return 0;
