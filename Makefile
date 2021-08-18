@@ -1,23 +1,24 @@
-CC=/data/build/rk3399_linux_release_v2.5.1_20210301/prebuilts/gcc/linux-x86/aarch64/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc
+include Makefile.param
 
-test: main.o gpio/gpio.o android/android.o ttp229/ttp229.o
-	$(CC) -static main.o gpio/gpio.o android/android.o ttp229/ttp229.o -o test
+SRCS := $(wildcard *.c)
+SRCSH := $(wildcard *.h)
 
-main.o: main.c gpio/gpio.h android/android.h ttp229/ttp229.h
-	$(CC) -static -c main.c
+TARGET := $(SRCS:%.c=%.o)
 
-gpio:
-	cd gpio && $(MAKE)
+all: $(TARGET) $(OBJS)
+	@cd android;     make
+	@cd gpio;        make
+	@cd ttp229;      make
+	$(CC) $(TARGET) $(OBJS) -o $(PROJECT) $(CFLAGS)
 
-android:
-	cd android && $(MAKE)
 
-ttp229:
-	cd ttp229 && $(MAKE)
+$(TARGET): $(SRCS) $(SRCSH)
+	$(CC) $(CFLAGS) -c $(SRCS) $(INCLUDE_PATH)
+
+.PHONY: clean
 
 clean:
-	rm -rf *.o
-	rm -rf gpio/*.o
-	rm -rf android/*.o
-	rm -rf ttp229/*.o
-	rm test
+	$(RM) $(TARGET)
+	@cd android;		make clean
+	@cd gpio;		make clean
+	@cd ttp229;		make clean
