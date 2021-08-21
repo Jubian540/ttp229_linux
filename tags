@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+$(TARGET)	Makefile	/^$(TARGET): $(SRCS) $(SRCSH)$/;"	t
+$(TARGET)	android/Makefile	/^$(TARGET): $(SRCS) $(SRCSH)$/;"	t
+$(TARGET)	gpio/Makefile	/^$(TARGET): $(SRCS) $(SRCSH)$/;"	t
+$(TARGET)	leds/Makefile	/^$(TARGET): $(SRCS) $(SRCSH)$/;"	t
+$(TARGET)	ttp229/Makefile	/^$(TARGET): $(SRCS) $(SRCSH)$/;"	t
+ANDROID_	android/android.h	/^#define ANDROID_$/;"	d
+ANDROID_CMD	android/android.h	/^#define ANDROID_CMD(/;"	d
+ANDROID_POWER	android/android.h	/^#define ANDROID_POWER /;"	d
+ANDROID_VOLUME_DOWN	android/android.h	/^#define ANDROID_VOLUME_DOWN /;"	d
+ANDROID_VOLUME_UP	android/android.h	/^#define ANDROID_VOLUME_UP /;"	d
+DIRECTION_IN	gpio/gpio.h	/^#define DIRECTION_IN /;"	d
+DIRECTION_OUT	gpio/gpio.h	/^#define DIRECTION_OUT /;"	d
+DIR_OF_THIRD_PARTY	.ycm_extra_conf.py	/^DIR_OF_THIRD_PARTY = p.join( DIR_OF_THIS_SCRIPT, 'third_party' )$/;"	v
+DIR_OF_THIS_SCRIPT	.ycm_extra_conf.py	/^DIR_OF_THIS_SCRIPT = p.abspath( p.dirname( __file__ ) )$/;"	v
+DIR_OF_WATCHDOG_DEPS	.ycm_extra_conf.py	/^DIR_OF_WATCHDOG_DEPS = p.join( DIR_OF_THIRD_PARTY, 'watchdog_deps' )$/;"	v
+FindCorrespondingSourceFile	.ycm_extra_conf.py	/^def FindCorrespondingSourceFile( filename ):$/;"	f
+GPIO	gpio/gpio.h	/^#define GPIO$/;"	d
+IsHeaderFile	.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f
+PathToPythonUsedDuringBuild	.ycm_extra_conf.py	/^def PathToPythonUsedDuringBuild():$/;"	f
+PythonSysPath	.ycm_extra_conf.py	/^def PythonSysPath( **kwargs ):$/;"	f
+SOURCE_EXTENSIONS	.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	v
+SRCS	Makefile	/^SRCS := $(wildcard *.c)$/;"	m
+SRCS	android/Makefile	/^SRCS := $(wildcard *.c)$/;"	m
+SRCS	gpio/Makefile	/^SRCS := $(wildcard *.c)$/;"	m
+SRCS	leds/Makefile	/^SRCS := $(wildcard *.c)$/;"	m
+SRCS	ttp229/Makefile	/^SRCS := $(wildcard *.c)$/;"	m
+SRCSH	Makefile	/^SRCSH := $(wildcard *.h)$/;"	m
+SRCSH	android/Makefile	/^SRCSH := $(wildcard *.h)$/;"	m
+SRCSH	gpio/Makefile	/^SRCSH := $(wildcard *.h)$/;"	m
+SRCSH	leds/Makefile	/^SRCSH := $(wildcard *.h)$/;"	m
+SRCSH	ttp229/Makefile	/^SRCSH := $(wildcard *.h)$/;"	m
+Settings	.ycm_extra_conf.py	/^def Settings( **kwargs ):$/;"	f
+TARGET	Makefile	/^TARGET := $(SRCS:%.c=%.o)$/;"	m
+TARGET	android/Makefile	/^TARGET := $(SRCS:%.c=%.o)$/;"	m
+TARGET	gpio/Makefile	/^TARGET := $(SRCS:%.c=%.o)$/;"	m
+TARGET	leds/Makefile	/^TARGET := $(SRCS:%.c=%.o)$/;"	m
+TARGET	ttp229/Makefile	/^TARGET := $(SRCS:%.c=%.o)$/;"	m
+TARGET_PATH	android/Makefile	/^TARGET_PATH := $(PWD)$/;"	m
+TARGET_PATH	gpio/Makefile	/^TARGET_PATH := $(PWD)$/;"	m
+TARGET_PATH	leds/Makefile	/^TARGET_PATH := $(PWD)$/;"	m
+TARGET_PATH	ttp229/Makefile	/^TARGET_PATH := $(PWD)$/;"	m
+TTP229	ttp229/ttp229.h	/^#define TTP229$/;"	d
+TTP229_KEY_ERROR	ttp229/ttp229.h	/^#define TTP229_KEY_ERROR /;"	d
+all	Makefile	/^all: $(TARGET) $(OBJS)$/;"	t
+android_cmd	android/android.c	/^int android_cmd(char *cmd)$/;"	f	typeref:typename:int
+clean	Makefile	/^clean:$/;"	t
+clean	android/Makefile	/^clean::$/;"	t
+clean	gpio/Makefile	/^clean::$/;"	t
+clean	leds/Makefile	/^clean::$/;"	t
+clean	ttp229/Makefile	/^clean::$/;"	t
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+database	.ycm_extra_conf.py	/^database = None$/;"	v
+direction	gpio/gpio.h	/^	char direction[4];$/;"	m	struct:gpio	typeref:typename:char[4]
+fd	gpio/gpio.h	/^	int fd;$/;"	m	struct:gpio	typeref:typename:int
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+g_close	gpio/gpio.c	/^void g_close(struct gpio* pgpio)$/;"	f	typeref:typename:void
+g_read	gpio/gpio.c	/^int g_read(struct gpio* pgpio, int *res)$/;"	f	typeref:typename:int
+g_write	gpio/gpio.c	/^int g_write(struct gpio* pgpio, int *state)$/;"	f	typeref:typename:int
+gp_scl	ttp229/ttp229.h	/^	struct gpio *gp_scl;$/;"	m	struct:ttp229	typeref:struct:gpio *
+gp_sdo	ttp229/ttp229.h	/^	struct gpio *gp_sdo;$/;"	m	struct:ttp229	typeref:struct:gpio *
+gpio	gpio/gpio.h	/^struct gpio {$/;"	s
+init_ttp229	ttp229/ttp229.c	/^int init_ttp229(struct ttp229* pttp229)$/;"	f	typeref:typename:int
+is_press	ttp229/ttp229.h	/^	int is_press;$/;"	m	struct:ttp229_state	typeref:typename:int
+key	ttp229/ttp229.h	/^	int key;$/;"	m	struct:ttp229_state	typeref:typename:int
+main	main.c	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
+malloc_gpio	gpio/gpio.c	/^int malloc_gpio(struct gpio* pgpio, int port, char *direction)$/;"	f	typeref:typename:int
+p	.ycm_extra_conf.py	/^import os.path as p$/;"	I
+pin_scl	ttp229/ttp229.h	/^	int pin_scl;$/;"	m	struct:ttp229	typeref:typename:int
+pin_sdo	ttp229/ttp229.h	/^	int pin_sdo;$/;"	m	struct:ttp229	typeref:typename:int
+port	gpio/gpio.h	/^	int port;$/;"	m	struct:gpio	typeref:typename:int
+push	Makefile	/^push: $(PROJECT)$/;"	t
+set_direction	gpio/gpio.c	/^int set_direction(struct gpio* pgpio, char *direction)$/;"	f	typeref:typename:int
+ttp229	ttp229/ttp229.h	/^struct ttp229 {$/;"	s
+ttp229_linux	README.md	/^# ttp229_linux$/;"	c
+ttp229_read	ttp229/ttp229.c	/^int ttp229_read(struct ttp229* pttp229, struct ttp229_state *pstate)$/;"	f	typeref:typename:int
+ttp229_state	ttp229/ttp229.h	/^struct ttp229_state {$/;"	s

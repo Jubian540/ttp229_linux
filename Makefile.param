@@ -1,0 +1,14 @@
+PROJECT := main
+CC := aarch64-linux-gnu-gcc 
+RM := rm
+MAKE := make
+
+CFLAGS := -lpthread -lm -ldl -static 
+
+INCLUDE_PATH := -Iandroid
+INCLUDE_PATH += -Igpio
+INCLUDE_PATH += -Ittp229
+
+OBJS += android/android.o
+OBJS += gpio/gpio.o
+OBJS += ttp229/ttp229.o
