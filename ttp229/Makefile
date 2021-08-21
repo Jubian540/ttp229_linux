@@ -4,14 +4,9 @@ SRCS := $(wildcard *.c)
 SRCSH := $(wildcard *.h)
 
 TARGET := $(SRCS:%.c=%.o)
-TARGET_PATH := $(PWD)
-
-INCLUDE_PATH += -I $(TARGET_PATH)
-
-LINK_TARGET += $(TARGET)
 
 $(TARGET): $(SRCS) $(SRCSH)
-	$(CC) $(CFLAGS) -c $(SRCS) -I$(TARGET_PATH)../gpio
+	$(CC) $(CFLAGS) -c $(SRCS) -I$(TOPDIR)/gpio
 
 clean::
 	$(RM) $(TARGET)

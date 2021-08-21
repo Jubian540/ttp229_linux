@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../gpio/gpio.h"
+#include "gpio.h"
 
 #ifndef TTP229
 #define TTP229

@@ -4,16 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
-#include "gpio/gpio.h"
-#include "ttp229/ttp229.h"
-#include "android/android.h"
+#include "gpio.h"
+#include "ttp229.h"
+#include "android.h"
 
 int main(int argc, char *argv[])
 {
-	char s[32];
-	int sum;
-	int count;
-	int prev_key;
 	struct ttp229* pttp229;
 	struct ttp229_state state;
 	
